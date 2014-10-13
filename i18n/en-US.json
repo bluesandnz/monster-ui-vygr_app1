@@ -1,5 +1,5 @@
 {
-	"vygr_app1": {
+	"skeleton": {
                 "description": "This is a test app to show how easy it is to develop new apps internally.  We can add API calls, links or new functionality",
                 "welcome": "Welcome to Voyager's First App"
 	}
