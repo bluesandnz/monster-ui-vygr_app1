@@ -4,9 +4,9 @@ define(function(require){
 		monster = require('monster');
 
 	var app = {
-		name: 'skeleton',
+		name: 'vygr_app1',
 
-		i18n: [ 'en-US', 'fr-FR' ],
+		i18n: [ 'en-US' ],
 
 		// Defines API requests not included in the SDK
 		requests: {},
