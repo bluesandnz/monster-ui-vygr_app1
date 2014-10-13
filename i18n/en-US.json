@@ -1,6 +1,6 @@
 {
 	"vygr_app1": {
-		"description": "First App",
-		"welcome": "Welcome to the Voyager App"
+                "description": "This is a test app to show how easy it is to develop new apps internally.",
+                "welcome": "Welcome to Voyager's First App"
 	}
 }
