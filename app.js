@@ -1,20 +1,15 @@
 define(function(require){
 	var $ = require('jquery'),
 		_ = require('underscore'),
-		monster = require('monster');
+		monster = require('monster'),
+		toastr = require('toastr');
 
 	var app = {
 		name: 'vygr_app1',
 
 		i18n: [ 'en-US' ],
 
-		// Defines API requests not included in the SDK
-		requests: {},
-
-		// Define the events available for other apps 
-		subscribe: {},
-
-		// Method used by the Monster-UI Framework, shouldn't be touched unless you're doing some advanced kind of stuff!
+        // Method used by the Monster-UI Framework, shouldn't be touched unless you're doing some advanced kind of stuff!
 		load: function(callback){
 			var self = this;
 
@@ -36,16 +31,37 @@ define(function(require){
 
 		// Entry Point of the app
 		render: function(container){
-			var self = this,
-				skeletonTemplate = $(monster.template(self, 'layout')),
-				parent = _.isEmpty(container) ? $('#ws-content') : container;
+                        var self = this,
+				container = container || $('#ws-content');
 
-			//self.bindEvents(skeletonTemplate);
+			// Get the initial dynamic data we need before displaying the app
+			self.listDevices(function(data) {
+				// Load the data in a Handlebars template
+				var appTemplate = $(monster.template(self, 'layout', { devices: data }));
 
-			(parent)
-				.empty()
-				.append(skeletonTemplate);
+				// Once everything has been attached to the template, we can add it to our main container
+				(container)
+					.empty()
+					.append(appTemplate);
+			});                        
+                        
+		},
+                
+                // API Calls
+		listDevices: function(callback) {
+			var self = this;
+
+			self.callApi({
+				resource: 'device.list',
+				data: {
+					accountId: self.accountId
+				},
+				success: function(devices) {
+					callback(devices.data);
+				}
+			});
 		}
+                
 	};
 
 	return app;

@@ -1,6 +1,9 @@
 {
-	"skeleton": {
-                "description": "This is a test app to show how easy it is to develop new apps internally.  We can add API calls, links or new functionality",
-                "welcome": "Welcome to Voyager's First App"
+	"vygrApp": {
+                "welcome": "Welcome to Voyager's First App.",
+                "description1": "This is a test app to show how easy it is to develop new apps internally.  We can add API calls, links or new functionality",
+                "description2": "In this case it's a simple list of the devices associated with the account.",
+                "moreStuff": "much more stuff",
+                "listDevices": "List of Devices Associated with the account"
 	}
 }
